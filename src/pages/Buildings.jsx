@@ -1,4 +1,10 @@
+import { useSearchParams } from 'react-router-dom'
+
+
 function Buildings(){
+    const [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams.get("uuid"));
+
     return(
         <>
             <main className="my-20">
