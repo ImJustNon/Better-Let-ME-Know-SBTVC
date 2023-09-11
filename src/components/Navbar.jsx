@@ -1,8 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
+import { GoogleLogout } from "react-google-login";
+import { config } from '../config/config'
 
-function Navbar(){
+function Navbar({ isLogin }){
     const { pathname } = useLocation();
 
+    function Logout(){
+    }
 
     return (
         <div className="container mx-auto">
@@ -40,7 +44,11 @@ function Navbar(){
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-ghost">Login</a>
+                    {isLogin ? 
+                        <Link to="/login" className="btn btn-ghost">Logout</Link>
+                        :
+                        <Link to="/login" className="btn btn-ghost">Login</Link>
+                    }
                 </div>
             </div>
         </div>
