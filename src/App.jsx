@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from './pages/NotFound';
-import Home from './pages/index.jsx';
+import Home from './pages/Home.jsx';
 import Navbar from './components/Navbar.jsx';
 import Buildings from './pages/Buildings';
 import Rooms from './pages/Rooms';

@@ -1,8 +1,8 @@
 function Footer(){
     return (
-        <footer className="footer footer-center p-4 bg-ghost text-base">
+        <footer className="footer footer-center p-4 bg-ghost text-base mb-16">
             <aside>
-                <p>Copyright © 2023 - Nonlnwza</p>
+                <p>Copyright © {new Date().getFullYear()} - Nonlnwza</p>
             </aside>
         </footer>
     );

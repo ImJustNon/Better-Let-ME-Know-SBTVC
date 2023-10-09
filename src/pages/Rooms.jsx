@@ -1,51 +1,52 @@
+import { useSearchParams } from 'react-router-dom';
+import NotFound from './NotFound';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 function Rooms(){
+    const [searchParams, setSearchParams] = useSearchParams();
+    const uuid = searchParams.get("uuid");
+
+    const [roomInfo, setRoomInfo] = useState([]);
+    
+    useEffect(() =>{
+        fetch("https://nopapi.jaturontongchaiiii.com/index.php/api/Admin/GetRoom", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                uuid: uuid,
+            }),
+        }).then(response => response.json()).then(response =>{
+            setRoomInfo(response);
+            console.log(response);
+        });
+    }, []);
+
+    if(!uuid){  
+        return(<NotFound />);
+    } 
     return(
         <>
             <main className="my-20">
                 <div className="p-5 text-center">
-                    <h2 className="mb-3 text-3xl ">ห้องเรียน</h2>
+                    <h2 className="mb-3 text-3xl ">{roomInfo[0]?.nameRoom}</h2>
                 </div>
                 <div className="container mx-auto">
-                    <div className="overflow-x-auto">
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>1</td>
-                                    <td>Cy Ganderton</td>
-                                    <td>Quality Control Specialist</td>
-                                    <td>Blue</td>
-                                    <td><button className="btn btn-neutral">เพิ่มเติม</button></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>2</td>
-                                    <td>Hart Hagerty</td>
-                                    <td>Desktop Support Technician</td>
-                                    <td>Purple</td>
-                                    <td><button className="btn btn-neutral">เพิ่มเติม</button></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>3</td>
-                                    <td>Brice Swyre</td>
-                                    <td>Tax Accountant</td>
-                                    <td>Red</td>
-                                    <td><button className="btn btn-neutral">เพิ่มเติม</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <hr className='my-10'/>
+                    <h1 className='text-xl text-center'>ภาพภายในห้องเรียน</h1>
+                    <img className='mx-auto my-10 rounded-xl w-2/3' src={roomInfo[0]?.pathPicture} alt="buildingPic" />
+                    <h1 className='text-xl text-center'>วีดีโอภายในห้องเรียน</h1>
+                    <iframe 
+                        className='text-center mx-auto my-10 w-2/3 h-96 rounded-xl'
+                        width="560" 
+                        height="315" 
+                        src={roomInfo[0]?.pathVideo}
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowFullScreen>
+                    </iframe>
+                    <hr className='my-10'/>
                 </div>
             </main>
         </>
