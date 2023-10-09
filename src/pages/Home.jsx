@@ -22,7 +22,7 @@ function Home(){
                     <section className="text-center">    
                         <h4 className="my-10 text-xl"><strong> เเผนผังจำลอง </strong></h4>
             
-                        <img src="https://tp.ac.th/wp-content/uploads/2022/11/Icogram-2022-11-10-19_36-4-768x400.png" alt="" className="mx-auto rounded-lg" />
+                        <img src="https://nop.jaturontongchaiiii.com/assets/img/NewIcogram%202023-08-09%2021_23%20(4).png" alt="" className="mx-auto rounded-lg" />
                     </section>
                     <section className="text-center">
                         <h4 className="my-10 text-xl"><strong> อาคารเรียน </strong></h4>
