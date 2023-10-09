@@ -35,7 +35,8 @@ function Buildings(){
                 
                 <div className="container mx-auto">
                     <hr className='my-16'/>
-                    <img className='mx-auto rounded-xl w-2/3' src="https://nop.jaturontongchaiiii.com/assets/img/2020-12-20.jpg" alt="buildingPic" />
+                    {/* <img className='mx-auto rounded-xl w-2/3' src="https://nop.jaturontongchaiiii.com/assets/img/2020-12-20.jpg" alt="buildingPic" /> */}
+                    <img className='mx-auto rounded-xl w-2/3' src={buildingInfo[0]?.pathPicture} alt={`buildingPic_${buildingInfo[0]?.nameBuilding}`} />
                     <div className="overflow-x-auto mt-16 glass rounded-xl">
                         <table className="table">
                             <thead>
